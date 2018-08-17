@@ -1,5 +1,13 @@
 #!/usr/bin/env python3
 
+
+"""
+MIT License
+
+Copyright (c) 2018 Jiun Yen
+"""
+
+
 # Imports
 import os
 import argparse
