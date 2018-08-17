@@ -8,9 +8,10 @@ from datetime import datetime
 from random import sample
 from multiprocessing import Pool, cpu_count
 from functools import partial
+from time import time
 
 # Constants
-_amino_acids_ = 'ARNDCQEGHILKMFPSTWYVXBZU'
+_amino_acids_ = 'ARNDCQEGHILKMFPSTWYVXBZUO'
 _aa_set_ = set(_amino_acids_)
 _blank_ = [0 for _ in range(len(_amino_acids_) + 1)]
 _verbose_ = False
@@ -40,6 +41,8 @@ def composition(sequence):
     return comp
 
 def build_db(p_fasta, p_db=''):
+
+    t0 = time()
 
     if not p_db:
         p_db = p_fasta + '.disorderdb'
@@ -76,6 +79,7 @@ def build_db(p_fasta, p_db=''):
             n_seqs += 1
 
     if _verbose_:
+        print('\tCompleted in %.1f minutes' % (time() - t0)/60)
         print('Generated database for %d sequences at %s' % (n_seqs, p_db))
 
     return p_db, db_comps
@@ -95,6 +99,8 @@ def read_db(p_db):
 
 def search(p_query, db_comps, p_out=''):
 
+    t0 = time()
+
     if not p_out:
         stamp = 'search-%s-%s.csv' % (datetime.now().strftime('%Y%m%d%H%M%S'), ''.join(sample('ABCDEF', 4)))
         p_file, _  = os.path.splitext(p_query)
@@ -109,6 +115,8 @@ def search(p_query, db_comps, p_out=''):
         print('Searching on %d CPUs ...' % _cpu_)
 
     for q_header, q_seq in query_seqs.items():
+
+        print('\tQuery: %s' % q_header)
 
         query_comp = composition(q_seq)
 
@@ -125,6 +133,7 @@ def search(p_query, db_comps, p_out=''):
                 _ = f.write('%s,%s,%.4f\n' % (q_header, h, d))
 
     if _verbose_:
+        print('\tCompleted in %.1f minutes' % (time() - t0) / 60)
         print('Search complete, results saved as %s' % p_out)
 
     return p_out
