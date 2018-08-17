@@ -78,4 +78,4 @@ query-seq-2|database-seq-75|0.321
 #### No wheel currently :( , so just:
 ##### 1. Download the .zip
 ##### 2. Unpack it wherever you want
-##### 3. Run as described above
+##### 3. Find disorderly.py under src/ and run as described above
