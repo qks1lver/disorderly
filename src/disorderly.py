@@ -10,7 +10,7 @@ from multiprocessing import Pool, cpu_count
 from functools import partial
 
 # Constants
-_amino_acids_ = 'ARNDCQEGHILKMFPSTWYVX'
+_amino_acids_ = 'ARNDCQEGHILKMFPSTWYVXBZU'
 _aa_set_ = set(_amino_acids_)
 _blank_ = [0 for _ in range(len(_amino_acids_) + 1)]
 _verbose_ = False
@@ -65,6 +65,9 @@ def build_db(p_fasta, p_db=''):
 
             else:
                 seq += l.strip()
+
+            if n_seqs % 100 == 0:
+                fo.flush()
 
         if seq:
             comp = composition(seq)
