@@ -79,7 +79,7 @@ def build_db(p_fasta, p_db=''):
             n_seqs += 1
 
     if _verbose_:
-        print('\tCompleted in %.1f minutes' % (time() - t0)/60)
+        print('\tCompleted in %.1f minutes' % ((time() - t0)/60))
         print('Generated database for %d sequences at %s' % (n_seqs, p_db))
 
     return p_db, db_comps
@@ -133,7 +133,7 @@ def search(p_query, db_comps, p_out=''):
                 _ = f.write('%s,%s,%.4f\n' % (q_header, h, d))
 
     if _verbose_:
-        print('\tCompleted in %.1f minutes' % (time() - t0) / 60)
+        print('\tCompleted in %.1f minutes' % ((time() - t0) / 60))
         print('Search complete, results saved as %s' % p_out)
 
     return p_out
