@@ -172,7 +172,7 @@ def read_fasta(p_fasta):
 if __name__ == '__main__':
 
     parser = argparse.ArgumentParser(description='Search similar proteins by composition.')
-    parser.add_argument('-i', dest='p_query', help='Query FASTA')
+    parser.add_argument('-i', dest='p_query', default='', help='Query FASTA')
     parser.add_argument('-fb', dest='p_db_fasta', default='', help='FASTA of database')
     parser.add_argument('-o', dest='p_out', default='', help='Output file name/path')
     parser.add_argument('-db', dest='p_db', default='', help='Database name/path')
@@ -183,8 +183,9 @@ if __name__ == '__main__':
     _verbose_ = args.verbose
 
     if args.p_db_fasta:
-        _, db_comps = build_db(args.p_db_fasta)
+        _, db_comps = build_db(args.p_db_fasta, args.p_db)
     else:
         db_comps = read_db(args.p_db)
 
-    search(args.p_query, db_comps, args.p_out)
+    if args.p_query:
+        search(args.p_query, db_comps, args.p_out)
