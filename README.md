@@ -1,5 +1,5 @@
 # Disorderly.py
-#### Compare protein sequences by their length and composition
+#### Compare protein sequences by their lengths and compositions
 ###### MIT License.
 ###### Requires Python 3+
 
@@ -10,10 +10,10 @@ $ python3 disorderly.py -h
 
 ## How to use it?
 
-#### 1. Prepare your query
+### 1. Prepare your query
 Put your query sequences in FASTA format and put them in a file
 
-#### 2. Prepare your database
+### 2. Prepare your database
 Your database is made of sequences that you want to compare against.
 This is also in FASTA format, but we need to convert it to a .disorderdb
 database so it can be used to search against.
@@ -31,7 +31,7 @@ __-fb__ Database FASTA file
 This will generate __your_database.fasta.disorderdb__ in the same
 folder as __your_database.fasta__
 
-#### 3. Search
+### 3. Search
 Each of your queries is compared only to sequences of the same length in
 the database.
 Once a same-length sequence is found, the Euclidean distance between the
@@ -54,7 +54,7 @@ __query_search-20180816190934-ABCD.csv__). The __-v__ verbose flag will
 tell you where your result is, which will be in the same directory as
 your query)
 
-#### Alternatively, you can run everything all at once:
+### Alternatively, you can run everything all at once:
 ```
 $ python3 disorderly.py -v -i query.fasta -fb your_database.fasta
 ```
