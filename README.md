@@ -79,3 +79,18 @@ query-seq-2|database-seq-75|0.321
 ##### 1. Download the .zip
 ##### 2. Unpack it wherever you want
 ##### 3. Find disorderly.py under src/ and run as described above
+
+## For Stanford folks
+#### Those that run on MEMEX (or any of our servers that uses SLURM):
+#### Feel free to use the _bash_run.sh_ file to submit jobs so it can be run on multiple CPUs
+
+```
+$ sbatch bash_run.sh -v -i query.fasta -fb your_database.fasta
+```
+__NOTE:__ bash_run.sh must be in the same folder as disorderly.py
+
+__ALSO:__ It is currently configured to use the DPB partition and 24 cores (1 node on MEMEX). Edit the file with any editor to change this, i.e.:
+```
+#SBATCH -p dge    # To use the DGE partition
+#SBATCH -c 12     # for 12 cores
+```

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-#SBATCH -J disordered_protein
+#SBATCH -J disorderly
 #SBATCH -p DPB
 #SBATCH -c 24
 #SBATCH --mem=10000
